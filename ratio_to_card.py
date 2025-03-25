@@ -30,7 +30,7 @@ all_names_40 = alfbt_dupt[0:40]
 deck_01 = []
 round = 0
 template = df_ratios.iloc[0]
-print(template)
+#print(template)
 def df_to_ratio_list(template): #defines a function to get the ratios from a row of df_ratios
     round = 0
     deck_01 = []
@@ -51,11 +51,12 @@ def df_to_ratio_list(template): #defines a function to get the ratios from a row
             deck_01.append(all_names_40[round])
             round +=1
     return deck_01
-print(df_to_ratio_list(template))  #test the function
+#print(df_to_ratio_list(template))  #test the function
 all_ratios_40_name = []
 for index, row in df_ratios.iterrows():
-    all_ratios_40_name.append(df_to_ratio_list(row))
-print(all_ratios_40_name)
+    print(df_ratios.iloc[row]['ca1'].values[0], df_ratios.iloc[row]['ca2'].values[0], df_ratios.iloc[row]['ca3'].values[0])
+    all_ratios_40_name.append([df_to_ratio_list(row), [df_ratios.iloc[row]['ca1'].values[0], df_ratios.iloc[row]['ca2'].values[0], df_ratios.iloc[row]['ca3'].values[0]]])
+#print(all_ratios_40_name)
 
 np.savetxt("all_ratios_40_name.csv", all_ratios_40_name, delimiter=",", fmt='%s')
 
@@ -66,4 +67,4 @@ cards_numbered_temp = list(itertools.chain.from_iterable(zip(deck_01, deck_nums)
 
 
 cards_numbered = list(itertools.islice(cards_numbered_temp, 2))
-print(cards_numbered)
+#print(cards_numbered)
