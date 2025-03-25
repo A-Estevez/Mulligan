@@ -4,11 +4,14 @@ import string
 import itertools
 #simbolos < > 
 
+#####
+#gets a csv of all possible ratios for a 40 card deck
+#and transforms it into a csv of all possible ratios with unique names for each unique card
+#####
+
 df_ratios = pd.read_csv('all_ratios_40.csv',index_col=False,  names = ('a1', 'ca1', 'a2', 'ca2', 'a3', 'ca3', 'cunicas'))
-df_decks = pd.read_csv('all_decks_40.csv', header = None)
 
 #print(df_ratios)
-#print(df_decks.columns)
 
 alfabet = list(string.ascii_lowercase)
 #print(alfabet)
@@ -32,7 +35,7 @@ def df_to_ratio_list(template): #defines a function to get the ratios from a row
     round = 0
     deck_01 = []
     while round < template.loc['ca1'] + template.loc['ca2'] + template.loc['ca3']:
-        if round <template.loc['ca1']:
+        if round < template.loc['ca1']:
 
             deck_01.append(all_names_40[round])
             round +=1
